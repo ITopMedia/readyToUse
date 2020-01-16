@@ -1,0 +1,173 @@
+<div class="mysocial-cont">
+    <div class="mysocial">
+        <a href="https://web.whatsapp.com/send?phone=4367761947786" target="_blank" class="fab whatsapp no"></a>
+        <a href="https://telegram.me/Elenchen777" target="_blank" class="fab telegram no"></a>
+        <a href="tel:+4367761947786" class="fab phone no"></a>
+    </div>
+</div>
+
+
+<style>
+
+    /*
+    MySocial Widget
+    */
+    .mysocial-cont{
+        position: fixed;
+        bottom: 20px;
+        right: 80px;
+        z-index: 1001;
+    }
+    .mysocial, .mysocial:before, .mysocial:after, .fab {
+        height: 56px;
+        width: 56px;
+        border-radius: 50%;
+        position: absolute;
+        cursor: pointer;
+    }
+
+    .mysocial {
+        position: relative;
+    }
+    .mysocial:before, .mysocial:after {
+        content: '';
+        will-change: transform;
+    }
+    .mysocial:before {
+        background: url('/wp-content/themes/kastell/assets/img/icons/m_icon.svg') center/28px no-repeat;
+        z-index: 5;
+        transition: 0.3s;
+    }
+    .mysocial:after {
+        background: #184488;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        z-index: -1;
+        transition: 0.39s;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+    .mysocial.active:before {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+    .mysocial.active:after {
+        /*width: 3000px;*/
+        /*height: 3000px;*/
+    }
+
+    .fab {
+        display: block;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        transition: 0.3s;
+        -webkit-animation: 0.3s down forwards;
+        animation: 0.3s down forwards;
+        opacity: 0;
+        will-change: animation;
+        pointer-events: none;
+    }
+    .fab.facebook {
+        background: #3b5897 url('/wp-content/themes/kastell/assets/img/icons/facebook.svg') center/56px no-repeat;
+        top: -200px;
+    }
+    .fab.whatsapp {
+        background: #4dc247 url('/wp-content/themes/kastell/assets/img/icons/whatsapp-logo.svg') center/28px no-repeat;
+        top: -132px;
+    }
+    .fab.telegram {
+        background: #41b3e6 url('/wp-content/themes/kastell/assets/img/icons/telegram.svg') center/56px no-repeat;
+        top: -66px;
+    }
+    .fab.phone {
+        background: #ec5923 url('/wp-content/themes/kastell/assets/img/icons/phone.svg') center/28px no-repeat;
+    }
+
+    .fab.active {
+        -webkit-animation: 0.48s up forwards;
+        animation: 0.48s up forwards;
+        pointer-events: all;
+    }
+    .fab.active:nth-child(1) {
+        -webkit-animation-delay: 0.6s;
+        animation-delay: 0.6s;
+    }
+    .fab.active:nth-child(2) {
+        -webkit-animation-delay: 0.4s;
+        animation-delay: 0.4s;
+    }
+    .fab.active:nth-child(3) {
+        -webkit-animation-delay: 0.2s;
+        animation-delay: 0.2s;
+    }
+    .fab.no {
+        -webkit-animation: none;
+        animation: none;
+    }
+    
+@-webkit-keyframes up {
+    50% {
+        -webkit-transform: translateY(-170%);
+        transform: translateY(-170%)
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(-130%);
+        transform: translateY(-130%)
+    }
+}
+
+@keyframes up {
+    50% {
+        -webkit-transform: translateY(-170%);
+        transform: translateY(-170%)
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(-130%);
+        transform: translateY(-130%)
+    }
+}
+
+@-webkit-keyframes down {
+    0% {
+        opacity: 1;
+        -webkit-transform: translateY(-130%);
+        transform: translateY(-130%)
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        top: 0
+    }
+}
+
+@keyframes down {
+    0% {
+        opacity: 1;
+        -webkit-transform: translateY(-130%);
+        transform: translateY(-130%)
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        top: 0
+    }
+}
+
+</style>
+
+
+<script>
+    $(".mysocial").on('click', function(e) {
+        $(".fab").removeClass("no");
+        if(e.target != this) return;
+        $('.mysocial, .fab').toggleClass("active");
+    });
+</script>
